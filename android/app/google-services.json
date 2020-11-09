@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "919690579167",
+    "firebase_url": "https://dzemaatapp-dac59.firebaseio.com",
+    "project_id": "dzemaatapp-dac59",
+    "storage_bucket": "dzemaatapp-dac59.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:919690579167:android:93d515639c20a4e297ad6a",
+        "android_client_info": {
+          "package_name": "com.example.dzemaat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "919690579167-5ji3ua9cd671dnpnb9tvb2421mkalddq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dzemaat",
+            "certificate_hash": "5241368c4646bda6f7a5a7ba8dd47c6320c0693e"
+          }
+        },
+        {
+          "client_id": "919690579167-ebs715ffk9jbutt4efilqc9vg92u11ll.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALGJb69qmDND9Tn6NUgWzjdEepfQE--GM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "919690579167-ebs715ffk9jbutt4efilqc9vg92u11ll.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
