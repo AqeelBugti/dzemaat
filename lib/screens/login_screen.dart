@@ -1,4 +1,3 @@
-
 import 'package:dzemaat/const/my_decoration.dart';
 import 'package:dzemaat/const/my_textstyle.dart';
 import 'package:dzemaat/screens/home_screen.dart';
@@ -10,6 +9,9 @@ import 'package:dzemaat/widget/toptitle.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class LoginScreen extends StatefulWidget {
   static double widthStep, heightStep;
@@ -168,6 +170,25 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+  Future<void> signUpWithFacebook() async {
+    try {
+      var facebookLogin = new FacebookLogin();
+      var result = await facebookLogin.logIn(['email']);
+
+      if (result.status == FacebookLoginStatus.loggedIn) {
+        final AuthCredential credential = FacebookAuthProvider.credential(
+          result.accessToken.token,
+        );
+        final User user =
+            (await FirebaseAuth.instance.signInWithCredential(credential)).user;
+        print('signed in ' + user.displayName);
+        return user;
+      }
+    } catch (e) {
+      print(e.message);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     LoginScreen.widthStep = MediaQuery.of(context).size.width / 1000;
@@ -213,24 +234,19 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          _buildSingleConnectWith(image: "facebook"),
+                          _buildSingleConnectWith(
+                            image: "facebook",
+                            onTap: () {
+                              signUpWithFacebook();
+                            },
+                          ),
                           _buildSingleConnectWith(image: "twitter"),
                           _buildSingleConnectWith(
-                              image: "google",
-                              onTap: () {
-                                signInWithGoogle().then(
-                                  (result) => {
-                                    if (result != null)
-                                      {
-                                       Container(
-                                         height: 1000,
-                                         width: 300,
-                                         color: Colors.red,
-                                       ),
-                                      }
-                                  },
-                                );
-                              }),
+                            image: "google",
+                            onTap: () {
+                              signInWithGoogle();
+                            },
+                          ),
                         ],
                       ),
                     ),

@@ -1,4 +1,3 @@
-
 import 'package:dzemaat/aamalPages/aammalmain_Screen.dart';
 import 'package:dzemaat/bookpages/bookmain_Screen.dart';
 import 'package:dzemaat/const/my_decoration.dart';
@@ -11,6 +10,7 @@ import 'package:dzemaat/profilepage/profilemain.dart';
 import 'package:dzemaat/provider/my_provider.dart';
 import 'package:dzemaat/quranpages/quranmain_screen.dart';
 import 'package:dzemaat/scholarpage/scholarmain_screen.dart';
+import 'package:dzemaat/videopages/videomain_screens.dart';
 import 'package:dzemaat/widget/toptitle.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -128,11 +128,13 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           _buildSingleDrawerTab(
             image: "ic_video",
-            onTap: (){
-              
+            onTap: () {
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                  builder: (context) => VideoMainScreen(),
+                ),
+              );
             },
-             
-            
             name: "Video",
           ),
           _buildSingleDrawerTab(
